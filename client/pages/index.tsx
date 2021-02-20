@@ -2,6 +2,7 @@ import Layout from '../layouts'
 import ConnectRoom from '../components/chat/v1/connectRoom'
 import SendMessage from '../components/chat/v1/sendMessage'
 import ReceiveMessage from '../components/chat/v1/receiveMessage'
+import { useState } from 'react'
 
 // Title
 const headerTitle = {
@@ -10,11 +11,20 @@ const headerTitle = {
 }
 
 const Index = () => {
+  const [username, setUsername] = useState('')
+
+  const handleGetUsername = (name: string) => {
+    if (typeof name == 'undefined') return
+    setUsername(name)
+  }
+  
+  console.log(username)
+
   return(
     <Layout {...headerTitle}>
       {/* Connect Section */}
       <section>
-        <ConnectRoom />
+        <ConnectRoom getUsernameFunc={handleGetUsername}/>
       </section>
       
       {/* Chat Section */}
@@ -24,7 +34,7 @@ const Index = () => {
 
       {/* Send Message Section */}
       <section>
-        <SendMessage />
+        <SendMessage username={username}/>
       </section>
     </Layout>
   )
