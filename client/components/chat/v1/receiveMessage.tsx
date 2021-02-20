@@ -9,7 +9,7 @@ const ReceiveMessage = () => {
 
   useEffect(() => {
     if (!listening) {
-      const events = new EventSource(`${HOST}:${PORT}/api/message`)
+      const events = new EventSource(`${HOST}:${PORT}/api/get/message`)
       events.onmessage = event => {
         const parsedData = JSON.parse(event.data)
         setMessages(messages => messages.concat(parsedData))
@@ -17,6 +17,8 @@ const ReceiveMessage = () => {
       setListening(true)
     }
   }, [listening, messages])
+
+  console.log(messages)
 
   return(
     <div className={styles.container}>

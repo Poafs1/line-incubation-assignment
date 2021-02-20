@@ -17,8 +17,6 @@ const Index = () => {
     if (typeof name == 'undefined') return
     setUsername(name)
   }
-  
-  console.log(username)
 
   return(
     <Layout {...headerTitle}>
