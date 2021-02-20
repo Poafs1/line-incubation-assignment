@@ -1,0 +1,14 @@
+.container {
+  background-color: #394156;
+  height: auto;
+  padding: 0 25px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title h1 {
+  margin: 0px;
+  color: white;
+}

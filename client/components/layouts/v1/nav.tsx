@@ -2,7 +2,9 @@ import styles from './css/Nav.module.css'
 
 const Nav = () => {
   return(
-    <div><h1>Nav</h1></div>
+    <nav className={styles.container}>
+      <div className={styles.title}><h1>LINE Incubation</h1></div>
+    </nav>
   )
 }
 
