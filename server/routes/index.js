@@ -13,4 +13,10 @@ router.get('/', controllers.hello)
  */
 router.post('/pingpong', controllers.pingpong)
 
+/**
+ * GET & POST message API for server-send events
+ */
+router.get('/message', controllers.getMessage)
+router.post('/message', controllers.postMessage)
+
 module.exports = router
