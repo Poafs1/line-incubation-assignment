@@ -1,9 +1,20 @@
 import styles from './css/SendMessage.module.css'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { HOST, PORT } from '../../../configs'
+import fetch from 'node-fetch'
 
-const SendMessage = () => {
+const domain = `${HOST}:${PORT}/api`
+
+const SendMessage = (props: any) => {
+  const { username } = props
   const [message, setMessage] = useState('')
+  const [name, setName] = useState('')
+
+  useEffect(() => {
+    if (typeof username == 'undefined') return
+    setName(username)
+  }, [username])
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -18,7 +29,21 @@ const SendMessage = () => {
 
   const handleOnClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    console.log(message)
+    if (typeof name == 'undefined' || name == '') return
+    if (typeof message == 'undefined' || message == '') return
+    const payload = {
+      user: name,
+      message: message
+    }
+    const res = await fetch(`${domain}/message`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
+    })
+    if (res.status != 200) {
+      console.log('Seem something went wrong. Please try again.')
+    }
+    return
   }
   
   return(
@@ -41,4 +66,6 @@ const SendMessage = () => {
 
 export default SendMessage
 
-SendMessage.propTypes = {}
+SendMessage.propTypes = {
+  username: PropTypes.string.isRequired
+}

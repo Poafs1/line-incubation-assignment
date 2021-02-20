@@ -1,10 +1,15 @@
 import styles from './css/ConnectRoom.module.css'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const ConnectRoom = () => {
+const ConnectRoom = (props: any) => {
   const [username, setUsername] = useState('')
   const [chatServer, setChatServer] = useState('')
+
+  useEffect(() => {
+    if (typeof username == 'undefined') return
+    props.getUsernameFunc(username)
+  }, [username])
   
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -57,4 +62,6 @@ const ConnectRoom = () => {
 
 export default ConnectRoom
 
-ConnectRoom.propTypes = {}
+ConnectRoom.propTypes = {
+  getUsernameFunc: PropTypes.func.isRequired
+}

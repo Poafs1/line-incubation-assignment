@@ -36,7 +36,8 @@ module.exports = {
     }
     res.writeHead(200, headers)
 
-    const data = `data: hello world\n`
+    const data = `data: ${JSON.stringify(messages)}\n`
+    data.time = new Date()
     res.write(data)
 
     const clientId = Date.now()
