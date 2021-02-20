@@ -1,4 +1,6 @@
 import Layout from '../layouts'
+import SendMessage from '../components/chat/v1/sendMessage'
+import ReceiveMessage from '../components/chat/v1/receiveMessage'
 
 // Title
 const headerTitle = {
@@ -8,7 +10,19 @@ const headerTitle = {
 
 const Index = () => {
   return(
-    <Layout {...headerTitle}><h1>Hello, World</h1></Layout>
+    <Layout {...headerTitle}>
+      {/* Connect Section */}
+      
+      {/* Chat Section */}
+      <section>
+        <ReceiveMessage />
+      </section>
+
+      {/* Send Message Section */}
+      <section>
+        <SendMessage />
+      </section>
+    </Layout>
   )
 }
 
