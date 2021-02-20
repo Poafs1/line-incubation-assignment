@@ -1,12 +1,13 @@
 import styles from './css/ReceiveMessage.module.css'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { HOST, PORT } from '../../../configs'
 
 const ReceiveMessage = () => {
   const [messages, setMessages] = useState([])
-  const [listening, setListening] = useState(false)
+  const [listening, setListening] = useState(true)
 
+  // Server not sending to client yet.
   useEffect(() => {
     if (!listening) {
       const events = new EventSource(`${HOST}:${PORT}/api/get/message`)
@@ -17,8 +18,6 @@ const ReceiveMessage = () => {
       setListening(true)
     }
   }, [listening, messages])
-
-  console.log(messages)
 
   return(
     <div className={styles.container}>
@@ -33,4 +32,4 @@ const ReceiveMessage = () => {
 
 export default ReceiveMessage
 
-ReceiveMessage.propTypes = {}
+// ReceiveMessage.propTypes = {}
