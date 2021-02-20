@@ -19,5 +19,16 @@ module.exports = {
 
     // Return text pong! to client
     return res.status(200).json({ "text": "pong!" })
+  },
+
+  getMessage: async function(req, res, next) {
+    const headers = {
+      'Content-Type': 'text/event-stream',
+      'Connection': 'keep-alive'
+    }
+  },
+
+  postMessage: async function(req, res) {
+
   }
 }
