@@ -1,4 +1,5 @@
 import Layout from '../layouts'
+import ConnectRoom from '../components/chat/v1/connectRoom'
 import SendMessage from '../components/chat/v1/sendMessage'
 import ReceiveMessage from '../components/chat/v1/receiveMessage'
 
@@ -12,6 +13,9 @@ const Index = () => {
   return(
     <Layout {...headerTitle}>
       {/* Connect Section */}
+      <section>
+        <ConnectRoom />
+      </section>
       
       {/* Chat Section */}
       <section>
